@@ -38,6 +38,9 @@ function onCommand(session, command) {
     case 'count':
       count(session)
       break
+    case 'beg':
+      beg(session)
+      break
     case 'donate':
       donate(session)
       break
@@ -81,6 +84,14 @@ function count(session) {
   let count = (session.get('count') || 0) + 1
   session.set('count', count)
   sendMessage(session, `${count}`)
+}
+
+function beg(session) {
+  // give $1 USD at current exchange rates
+  Fiat.fetch().then((toEth) => {
+    session.reply("Ok! I'll send you some cash.")
+    session.sendEth(toEth.USD(1))
+  })  
 }
 
 function donate(session) {
