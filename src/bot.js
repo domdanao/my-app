@@ -107,6 +107,7 @@ function sendMessage(session, message) {
   let controls = [
     {type: 'button', label: 'Ping', value: 'ping'},
     {type: 'button', label: 'Count', value: 'count'},
+    {type: 'button', label: 'Beg', value: 'beg'},    
     {type: 'button', label: 'Donate', value: 'donate'}
   ]
   session.reply(SOFA.Message({
